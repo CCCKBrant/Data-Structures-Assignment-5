@@ -126,8 +126,8 @@ Time and Space Analysis for problem 4:
 # Because: [1, 1+2, 1+2+3, 1+2+3+4]
 
 def running_total(nums):
+    seen = set()
     result = []
-    base = 1
     for item in nums:
         current_count = nums.count(item)
         if current_count > base:
@@ -143,5 +143,6 @@ Time and Space Analysis for problem 5:
 - Average-case:
 - Space complexity:
 - Why this approach?
-- Could it be optimized?
+- Could it be optimized? 
 """
+#I will understand this! 
