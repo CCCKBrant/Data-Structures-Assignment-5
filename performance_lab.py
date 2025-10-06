@@ -5,19 +5,30 @@
 # Example:
 # Input: [1, 3, 2, 3, 4, 1, 3]
 # Output: 3
-
 def most_frequent(numbers):
-    # Your code here
-    pass
+    base = 0
+    most_frqnt = None
+    for x in numbers:
+        current_count = numbers.count(x)
+        if current_count > base:
+            base = current_count
+            most_frqnt = x
+    return most_frqnt
+
+        
+
+print(most_frequent([1, 3, 2, 3, 4, 1, 3])) 
+ 
 
 """
 Time and Space Analysis for problem 1:
-- Best-case:
-- Worst-case:
-- Average-case:
-- Space complexity:
-- Why this approach?
-- Could it be optimized?
+- Best-case: The first item in the list is the most frequent. O(n)
+- Worst-case: All items in the list are unique.O(n)
+- Average-case: The more frequent items are somewhere in the middle of the list. O(n)
+- Space complexity: O(1) It does not create a new list or stor items in a list, and only uses the numbers provided in the initial function.
+- Why this approach? Uses count() which is one of the simple built-in list methods making the code minimal and optimal for smaller lists.
+- Could it be optimized? Without imporing other python material, I don't think it can be optimized.
+
 """
 
 
@@ -29,17 +40,25 @@ Time and Space Analysis for problem 1:
 # Output: [4, 5, 6, 7]
 
 def remove_duplicates(nums):
-    # Your code here
-    pass
+    seen = set()
+    result = []
+
+    for item in nums:
+        if item not in seen:
+            seen.add(item)
+            result.append(item)
+    return result
+
+print(remove_duplicates([4, 5, 4, 6, 5, 7]))
 
 """
 Time and Space Analysis for problem 2:
-- Best-case:
-- Worst-case:
-- Average-case:
-- Space complexity:
-- Why this approach?
-- Could it be optimized?
+- Best-case: There are no duplicates needing to be removed O(n).
+- Worst-case: There are many duplicates needing to be removed O(n^2).
+- Average-case: There are few duplicates needing to be removed O(n^2).
+- Space complexity: I am creating a list so it would be an O(n) space complexity.
+- Why this approach? This approach allows me to removed duplicates, but also keep the same order by using the loop function to make a correctly ordered list.
+- Could it be optimized? To my knowledge no, according to ChatGPT it says it is already optimal in terms of Big O.
 """
 
 
@@ -52,17 +71,26 @@ Time and Space Analysis for problem 2:
 # Output: [(1, 4), (2, 3)]
 
 def find_pairs(nums, target):
-    # Your code here
-    pass
+    seen = set()
+    pairs = set()
+
+    for num in nums:
+        complement = target - num
+        if complement in seen:
+            pairs.add(tuple(sorted((num,complement))))
+        seen.add(num)
+    return list(pairs)
+
+print(find_pairs([1, 2, 3, 4], target=5))
 
 """
 Time and Space Analysis for problem 3:
-- Best-case:
-- Worst-case:
-- Average-case:
-- Space complexity:
-- Why this approach?
-- Could it be optimized?
+- Best-case: None of the numbers in the list can pair up to make a sum of the target O(n)
+- Worst-case: All the numbers in the list can make a pair that adds up to be the target O(n)
+- Average-case: Some numbers will form a pair thats sum is the target, and some numbers don't O(n)
+- Space complexity: We are creating another list so we can store values that add up to the target, so O(n)
+- Why this approach? Most simple and effective way to find the unique pairs, and only runs through the list once.
+- Could it be optimized? No, because it is already optimal at O(n).
 """
 
 
@@ -98,10 +126,17 @@ Time and Space Analysis for problem 4:
 # Because: [1, 1+2, 1+2+3, 1+2+3+4]
 
 def running_total(nums):
-    # Your code here
-    pass
+    result = []
+    base = 1
+    for item in nums:
+        current_count = nums.count(item)
+        if current_count > base:
+            result.append(item + current_count)
+    return result
+    
+print(running_total([1, 2, 3, 4]))
 
-"""
+""""
 Time and Space Analysis for problem 5:
 - Best-case:
 - Worst-case:
